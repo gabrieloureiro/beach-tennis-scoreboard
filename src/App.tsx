@@ -1,11 +1,12 @@
-import { Header } from "./components/Header";
+import { ScoreboardDataProvider } from "./context";
+import { Home } from "./pages/Home";
 import { GlobalStyle } from "./styles/global";
 
 export function App() {
   return (
-    <>
-      <Header />
+    <ScoreboardDataProvider>
+      <Home />
       <GlobalStyle />
-    </>
+    </ScoreboardDataProvider>
   );
 }
