@@ -1,5 +1,5 @@
 import { useScoreboardData } from "../../context";
-import { Input } from "../../components";
+import { Input, Text } from "../../components";
 import Switch from "react-switch";
 import * as S from "./styles";
 
@@ -14,12 +14,6 @@ export function ScoreboardForm() {
     setPageStep,
   } = useScoreboardData();
 
-  const firstDuoIsServing =
-    firstDuo.playerOne.isServing || firstDuo.playerTwo.isServing;
-
-  const secondDuoIsServing =
-    secondDuo.playerOne.isServing || secondDuo.playerTwo.isServing;
-
   const isBestOfOne = game.numberOfSets === 1;
 
   const isBestOfThree = game.numberOfSets === 3;
@@ -29,7 +23,7 @@ export function ScoreboardForm() {
     firstDuo.playerTwo.name === "" ||
     secondDuo.playerOne.name === "" ||
     secondDuo.playerTwo.name === "" ||
-    (!firstDuoIsServing && !secondDuoIsServing);
+    (!firstDuo.playerOne.isServing && !secondDuo.playerOne.isServing);
 
   const handleChangeDuoServing = (checked: boolean, isSecondDuo: boolean) => {
     if (!isSecondDuo) {
@@ -79,7 +73,7 @@ export function ScoreboardForm() {
   };
   return (
     <S.Form>
-      <S.Text>Informações iniciais da partida</S.Text>
+      <Text>Informações iniciais da partida</Text>
       <Input
         onChange={(e) =>
           setGame((prevState) => ({
@@ -131,7 +125,10 @@ export function ScoreboardForm() {
         onChange={(e) =>
           setFirstDuo((prevState) => ({
             ...prevState,
-            playerOne: e.target.value,
+            playerOne: {
+              ...prevState.playerOne,
+              name: e.target.value,
+            },
           }))
         }
         placeholder="Digite o nome do jogador"
@@ -141,7 +138,10 @@ export function ScoreboardForm() {
         onChange={(e) =>
           setFirstDuo((prevState) => ({
             ...prevState,
-            playerTwo: e.target.value,
+            playerTwo: {
+              ...prevState.playerTwo,
+              name: e.target.value,
+            },
           }))
         }
         placeholder="Digite o nome do jogador"
@@ -151,9 +151,9 @@ export function ScoreboardForm() {
           checkedIcon={false}
           uncheckedIcon={false}
           onChange={(checked) => handleChangeDuoServing(checked, false)}
-          checked={firstDuoIsServing}
+          checked={firstDuo.playerOne.isServing}
         />
-        <S.Text>A dupla 1 começa sacando?</S.Text>
+        <Text>A dupla 1 começa sacando?</Text>
       </S.FormRow>
       <S.Label>Dupla 2</S.Label>
       <Input
@@ -161,7 +161,10 @@ export function ScoreboardForm() {
         onChange={(e) =>
           setSecondDuo((prevState) => ({
             ...prevState,
-            playerOne: e.target.value,
+            playerOne: {
+              ...prevState.playerOne,
+              name: e.target.value,
+            },
           }))
         }
         placeholder="Digite o nome do jogador"
@@ -171,7 +174,10 @@ export function ScoreboardForm() {
         onChange={(e) =>
           setSecondDuo((prevState) => ({
             ...prevState,
-            playerTwo: e.target.value,
+            playerTwo: {
+              ...prevState.playerTwo,
+              name: e.target.value,
+            },
           }))
         }
         placeholder="Digite o nome do jogador"
@@ -181,9 +187,9 @@ export function ScoreboardForm() {
           checkedIcon={false}
           uncheckedIcon={false}
           onChange={(checked) => handleChangeDuoServing(checked, true)}
-          checked={secondDuoIsServing}
+          checked={secondDuo.playerOne.isServing}
         />
-        <S.Text>A dupla 2 começa sacando?</S.Text>
+        <Text>A dupla 2 começa sacando?</Text>
       </S.FormRow>
       <S.Button
         onClick={handleSubmit}

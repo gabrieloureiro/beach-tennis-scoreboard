@@ -1,16 +1,10 @@
 import styled from "styled-components";
-import { Input } from "../Input";
+import { Input, Row } from "../../components";
 
 export const Checkbox = styled(Input).attrs({
   type: "checkbox",
 })`
   margin-right: 0.5rem;
-`;
-
-export const Text = styled.span`
-  padding: 12px 0;
-  color: #f7fafc;
-  font-weight: 600;
 `;
 
 export const Label = styled.label`
@@ -35,10 +29,8 @@ export const Button = styled.button`
   background: green;
 `;
 
-export const FormRow = styled.div`
+export const FormRow = styled(Row)`
   align-items: center;
-  display: flex;
-  flex-wrap: wrap;
   justify-content: space-evenly;
 `;
 

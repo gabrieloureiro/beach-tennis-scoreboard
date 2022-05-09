@@ -7,7 +7,7 @@ import {
 } from "react";
 import { defaultDuo, defaultGame } from "../constants";
 
-type PlayerProps = {
+export type PlayerProps = {
   name: string;
   isServing: boolean;
 };

@@ -16,7 +16,7 @@ export const Content = styled.div`
   padding: 24px;
   border-radius: 6px;
   background: #2d3748;
-  width: 400px;
+  width: 720px;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -29,6 +29,7 @@ export const Header = styled.header`
 
 export const Title = styled.h1`
   color: #f7fafc;
+  transition: font-size 0.5s ease;
 
   @media (max-width: 768px) {
     font-size: 1.5rem;
