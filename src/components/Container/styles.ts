@@ -16,7 +16,11 @@ export const Content = styled.div`
   padding: 24px;
   border-radius: 6px;
   background: #2d3748;
-  min-width: 400px;
+  width: 400px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const Header = styled.header`
@@ -25,4 +29,8 @@ export const Header = styled.header`
 
 export const Title = styled.h1`
   color: #f7fafc;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
