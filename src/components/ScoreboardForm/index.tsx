@@ -1,5 +1,5 @@
 import { useScoreboardData } from "../../context";
-import { Input, Text } from "../../components";
+import { Input, Text } from "..";
 import Switch from "react-switch";
 import * as S from "./styles";
 
@@ -9,14 +9,14 @@ export function ScoreboardForm() {
     setFirstDuo,
     secondDuo,
     setSecondDuo,
-    game,
-    setGame,
+    match,
+    setMatch,
     setPageStep,
   } = useScoreboardData();
 
-  const isBestOfOne = game.numberOfSets === 1;
+  const isBestOfOne = match.numberOfSets === 1;
 
-  const isBestOfThree = game.numberOfSets === 3;
+  const isBestOfThree = match.numberOfSets === 3;
 
   const isDisabledToNextStep =
     firstDuo.playerOne.name === "" ||
@@ -60,11 +60,11 @@ export function ScoreboardForm() {
   };
 
   const handleChangeNumberOfSets = (value: number) => {
-    setGame((prevState) => ({ ...prevState, numberOfSets: value }));
+    setMatch((prevState) => ({ ...prevState, numberOfSets: value }));
   };
 
   const handleChangeTiebreak = (isSuperTiebreak: boolean) => {
-    setGame((prevState) => ({ ...prevState, isSuperTiebreak }));
+    setMatch((prevState) => ({ ...prevState, isSuperTiebreak }));
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLButtonElement>) => {
@@ -76,9 +76,9 @@ export function ScoreboardForm() {
       <Text>Informações iniciais da partida</Text>
       <Input
         onChange={(e) =>
-          setGame((prevState) => ({
+          setMatch((prevState) => ({
             ...prevState,
-            gameDescription: e.target.value,
+            name: e.target.value,
           }))
         }
         placeholder="Descrição do jogo/campeonato"
@@ -105,7 +105,7 @@ export function ScoreboardForm() {
           <S.CheckboxWrapper>
             <S.Checkbox
               onChange={() => handleChangeTiebreak(false)}
-              checked={!game.isSuperTiebreak}
+              checked={!match.isSuperTiebreak}
             />
             <S.Label>Tiebreak</S.Label>
           </S.CheckboxWrapper>
@@ -113,7 +113,7 @@ export function ScoreboardForm() {
             <S.Checkbox
               type="checkbox"
               onChange={() => handleChangeTiebreak(true)}
-              checked={game.isSuperTiebreak}
+              checked={match.isSuperTiebreak}
             />
             <S.Label>Supertiebreak</S.Label>
           </S.CheckboxWrapper>

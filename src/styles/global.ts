@@ -4,6 +4,7 @@ export const GlobalStyle = createGlobalStyle`
 :root {
   --background: #171923;
   --text: #f7fafc;
+  --content: #2d3748;
 }
 
 * {
@@ -41,6 +42,7 @@ export const GlobalStyle = createGlobalStyle`
 
   button {
     cursor: pointer;
+    border: 0;
   }
 
   [disabled] {

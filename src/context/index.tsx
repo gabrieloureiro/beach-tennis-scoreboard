@@ -5,7 +5,7 @@ import {
   useContext,
   useState,
 } from "react";
-import { defaultDuo, defaultGame } from "../constants";
+import { defaultDuo, defaultMatch } from "../constants";
 
 export type PlayerProps = {
   name: string;
@@ -15,10 +15,13 @@ export type PlayerProps = {
 export type DuoProps = {
   playerOne: PlayerProps;
   playerTwo: PlayerProps;
+  gamesWon: number;
+  setsWon: number;
+  currentPointNumber: number;
 };
 
-export type GameProps = {
-  gameDescription: string;
+export type MatchProps = {
+  name: string;
   numberOfSets: number;
   isSuperTiebreak: boolean;
 };
@@ -30,8 +33,8 @@ type ScoreboardDataContextValue = {
   setFirstDuo: Dispatch<SetStateAction<DuoProps>>;
   secondDuo: DuoProps;
   setSecondDuo: Dispatch<SetStateAction<DuoProps>>;
-  game: GameProps;
-  setGame: Dispatch<SetStateAction<GameProps>>;
+  match: MatchProps;
+  setMatch: Dispatch<SetStateAction<MatchProps>>;
 };
 
 const ScoreboardDataContext = createContext<ScoreboardDataContextValue>(
@@ -44,7 +47,7 @@ export const useScoreboardData: () => ScoreboardDataContextValue = () =>
 export const ScoreboardDataProvider = ({ children }) => {
   const [pageStep, setPageStep] = useState(0);
 
-  const [game, setGame] = useState<GameProps>(defaultGame);
+  const [match, setMatch] = useState<MatchProps>(defaultMatch);
 
   const [firstDuo, setFirstDuo] = useState<DuoProps>(defaultDuo);
 
@@ -57,8 +60,8 @@ export const ScoreboardDataProvider = ({ children }) => {
     setFirstDuo,
     secondDuo,
     setSecondDuo,
-    game,
-    setGame,
+    match,
+    setMatch,
   };
 
   return (

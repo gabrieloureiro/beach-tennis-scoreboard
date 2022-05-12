@@ -1,4 +1,4 @@
-import { Container, ScoreboardForm, Scoreboard } from "../../components";
+import { Container, Scoreboard, ScoreboardForm } from "../../components";
 import { useScoreboardData } from "../../context";
 
 export function Home() {

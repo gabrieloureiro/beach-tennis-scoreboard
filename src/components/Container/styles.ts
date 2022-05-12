@@ -15,7 +15,7 @@ export const Content = styled.div`
   align-items: center;
   padding: 24px;
   border-radius: 6px;
-  background: #2d3748;
+  background: var(--content);
   width: 720px;
 
   @media (max-width: 768px) {
@@ -28,7 +28,7 @@ export const Header = styled.header`
 `;
 
 export const Title = styled.h1`
-  color: #f7fafc;
+  color: var(--text);
   transition: font-size 0.5s ease;
 
   @media (max-width: 768px) {
