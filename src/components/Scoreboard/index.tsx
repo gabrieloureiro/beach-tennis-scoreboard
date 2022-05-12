@@ -195,6 +195,7 @@ export function Scoreboard() {
         return;
       case 40:
         handlePointFirstDuo(0);
+        handlePointSecondDuo(0);
         handleGameFirstDuo();
         return;
       default:
@@ -215,6 +216,7 @@ export function Scoreboard() {
         return;
       case 40:
         handlePointSecondDuo(0);
+        handlePointFirstDuo(0);
         handleGameSecondDuo();
         return;
       default:
